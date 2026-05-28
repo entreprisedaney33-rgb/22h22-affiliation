@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fraunces + Inter via Google Fonts. Charge moins d'une seconde. */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: 14 24 14;            /* forest-950 */
+  --bg-elev: 26 42 26;
+  --surface: 36 58 36;       /* forest-800 */
+  --surface-2: 44 72 44;     /* forest-700 */
+  --line: 56 90 56;
+  --text: 231 229 226;       /* ink-100 */
+  --text-muted: 168 162 153; /* ink-300 */
+  --accent: 212 184 118;     /* gold-400 */
+  --accent-strong: 184 152 88;
+}
+
+html, body {
+  background: rgb(var(--bg));
+  color: rgb(var(--text));
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Texture grain ultra-discrète pour donner de la matière */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(at 8% 4%, rgba(212, 184, 118, 0.06) 0px, transparent 50%),
+    radial-gradient(at 92% 96%, rgba(74, 114, 74, 0.10) 0px, transparent 50%);
+  z-index: 0;
+}
+
+/* Scrollbar discrète */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 184, 118, 0.15);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(212, 184, 118, 0.3); }
+
+/* Sélection */
+::selection {
+  background: rgba(212, 184, 118, 0.3);
+  color: white;
+}
+
+/* Animation d'apparition pour les cartes */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.rise { animation: rise 0.5s ease-out backwards; }
+
+/* Utilitaires custom */
+.glass {
+  background: rgba(36, 58, 36, 0.55);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 184, 118, 0.10);
+}
+
+.divider-soft {
+  border-color: rgba(212, 184, 118, 0.08);
+}
+
+/* Focus ring sobre */
+*:focus-visible {
+  outline: 2px solid rgba(212, 184, 118, 0.6);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
